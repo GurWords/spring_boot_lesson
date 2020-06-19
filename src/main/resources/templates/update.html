@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block>
+    <form action="/admin/update" method="post">
+        <input type="hidden" name="id" th:value="${user.id}">
+        Name:
+        <input name="name" th:value="${user.name}">
+        Password:
+        <input name="password" th:value="${user.password}">
+        <div th:if= "${user.roleSet.size()==2}">
+            Roles:
+            <input name="role" th:value="${user.roleSet.get(0).role +','+ user.roleSet.get(1).role}">
+        </div >
+        <div th:if="${user.roleSet.size()==1}">
+            Role:
+            <input name="role" th:value="${roleList.get(0).role}">
+        </div>
+        Age:
+        <input name="age" th:value="${user.age}">
+        <input type="submit">
+    </form>
+</th:block>
+</body>
+</html>

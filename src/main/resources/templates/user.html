@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>
+        Id:
+        <input readonly th:value="${user.getId()}">
+    </li>
+    <li>
+        Name:
+        <input readonly th:value="${user.getName()}"/>
+    </li>
+    <li>
+        Age:
+        <input readonly th:value="${user.getAge()}">
+    </li>
+    <li>
+        Password:
+        <input readonly th:value="${user.getPassword()}">
+    </li>
+    <li>
+        Role:
+        <div th:each="roleiter : ${role}">
+            <input readonly th:value="${roleiter.authority}">
+        </div>
+    </li>
+</ul>
+<form action="/logout" method="get">
+    <input type="submit" value="Logout" />
+</form>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/admin/insert" method="post">
+    Name:
+    <input name="name">
+    Password:
+    <input name="password">
+    Age:
+    <input name="age">
+    Role:
+    <input name="role">
+    <input type="submit">
+</form>
+<table >
+    <th:block th:each = " user : ${userlist}">
+        Id:
+        <tr th:text="${user.id}">
+
+        </tr>
+        Name:
+        <tr th:text="${user.name}">
+
+        </tr>
+        Age:
+        <tr th:text="${user.age}">
+
+        </tr>
+        Password:
+        <tr th:text="${user.password}">
+
+        </tr>
+        <th:block th:each = "role : ${user.roleSet}">
+            Role:
+            <tr th:text="${role.getRole()}">
+
+            </tr>
+        </th:block>
+        <tr>
+            <form action="/admin/delete" method="post">
+                <input name="idDelete" type="hidden" th:value="${user.id}">
+                <button type="submit">Delete</button>
+            </form>
+        </tr>
+        <tr>
+            <form action="/admin/update" method="get">
+                <input name="idUpdate" type="hidden" th:value="${user.id}">
+                <button type="submit">Update</button>
+            </form>
+        </tr>
+        <br/>
+    </th:block>
+</table>
+<form action="/logout" method="get">
+    <input type="submit" value="Logout" />
+</form>
+</body>
+</html>
